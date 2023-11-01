@@ -1,0 +1,47 @@
+>> Funcionario
+
+GET Funcionario: http://localhost:3000/funcionario
+
+GET ID Funcionario: http://localhost:3000/funcionario/1
+
+POST Funcionario: http://localhost:3000/cadastrar 
+{
+	"nome": "Teste",
+	"cargo" : "Ok"
+}
+
+PUT Funcionario: http://localhost:3000/alterar/2
+{
+	"nome": "Misma",
+	"cargo": "Fisio"
+}
+
+DELETE Funcionario: http://localhost:3000/excluir/2
+
+==================================================================
+
+>> Chamado
+
+GET Chamado: http://localhost:3000/chamado
+GET ID Chamado: http://localhost:3000/chamado/6
+GET Funcionario&Chamado: http://localhost:3000/funcionariochamado
+
+POST Chamado: http://localhost:3000/cadastrarchamados
+{
+	"descricao": "NEW Testando chamado",
+	"data_abertura": "2023-10-25",
+	"data_fechamento": "2024-12-10",
+	"status": "Aberto",
+	"fk" : "4"
+}
+
+PUT Chamado: http://localhost:3000/alterarchamado/3
+{
+	"descricao": "Testando ALTERAÇÃO",
+	"data_abertura": "2020-10-20",
+	"data_fechamento": "2022-12-16",
+	"status": "fECHADO"
+}
+
+DELETE Chamado: http://localhost:3000/excluirchamado/3
+

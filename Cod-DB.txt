@@ -1,0 +1,44 @@
+use hotel;
+
+CREATE TABLE `hotel`.`funcionario` (
+`idfuncionario` INT NOT NULL AUTO_INCREMENT,
+`nome` VARCHAR(45) NOT NULL,
+PRIMARY KEY (`idfuncionario`));
+
+
+CREATE TABLE `hotel`.`chamado` (
+`idchamado` INT NOT NULL AUTO_INCREMENT,
+`descricao` VARCHAR(45) NOT NULL,
+`data_abertura` DATE NOT NULL,
+`data_fechamento` DATE NOT NULL,
+`status` VARCHAR(10) NOT NULL,
+`fk` INT NOT NULL,
+PRIMARY KEY (`idchamado`));
+
+ALTER TABLE `hotel`.`chamado`
+ADD INDEX `fk_idx` (`fk` ASC) VISIBLE;
+
+ALTER TABLE `hotel`.`chamado`
+ADD CONSTRAINT `fk`
+FOREIGN KEY (`fk`)
+REFERENCES `hotel`.`funcionario` (`idfuncionario`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION;
+
+ALTER TABLE `hotel`.`funcionario`
+ADD COLUMN `cargo` VARCHAR(45) NOT NULL AFTER `nome`;
+
+insert into `hotel`.`chamado`
+(descricao, data_abertura, data_fechamento, status, fk)
+values ( 'Apt 204 Torneira com vazamento', '2023-10-29', '1900-01-01',
+'Aberto', 1);
+
+SELECT funcionario.nome, chamado.descricao
+FROM hotel.funcionario
+INNER JOIN hotel.chamado
+ON hotel.funcionario.idfuncionario = hotel.chamado.fk;
+
+
+select * from funcionario;
+select * from chamado;
+
